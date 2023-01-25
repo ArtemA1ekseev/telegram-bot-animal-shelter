@@ -1,3 +1,4 @@
+![Лого](https://user-images.githubusercontent.com/113195869/214584551-61f845b0-7520-4563-ab74-d8a87cc36187.PNG)
 # (RU)
 ## Групповая работа с Java. Команда №4. Поток - DSprint 3.0.
 
@@ -19,7 +20,7 @@
  
  ------
  
- # (EN)
+# (EN)
 ## Group work with Java. Team No.4. The stream is DSprint 3.0.
 
 Telegram is a bot that can answer popular people's questions about what you need to know and be able to pick up an animal from a shelter. And also accept the report.
