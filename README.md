@@ -35,9 +35,9 @@ Telegram is a bot that can answer popular people's questions about what you need
 
 ## The development team "Half Java":
 
- - [Дениева Екатерина Юрьевна](https://github.com/Katy7711)
- - [Субботин Николай Юрьевич](https://github.com/nusubbotin/)
- - [Базаров Булат Владимирович](https://github.com/qwsq4)
- - [Алексеев Артем Александрович](https://github.com/ArtemA1ekseev)
+ - [Genieva Ekaterina Yurievna](https://github.com/Katy7711)
+ - [Subbotin Nikolay Yurievich](https://github.com/nusubbotin/)
+ - [Bazarov Bulat Vladimirovich](https://github.com/qwsq4)
+ - [Alekseyev Artem Alexandrovich](https://github.com/ArtemA1ekseev)
  
  ------
