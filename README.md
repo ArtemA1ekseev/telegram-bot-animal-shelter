@@ -5,7 +5,7 @@
 
 https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b
 
-Разработчики: 
+Комада разработчиков "Half Java": 
 
 Макс Ефремчиков 
 
