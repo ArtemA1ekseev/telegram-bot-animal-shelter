@@ -6,7 +6,7 @@
  ------
 
 ## Техническое задание проекта:
-- [Т.З.](https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b)
+- [Т.З.](https://skyengpublic.notion.site/4509dd17f5f840f1ba6807fe83aa9c15)
 
  ------
 
