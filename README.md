@@ -18,6 +18,7 @@
  - [Субботин Николай Юрьевич](https://github.com/nusubbotin/)
  - [Базаров Булат Владимирович](https://github.com/qwsq4)
  - [Алексеев Артем Александрович](https://github.com/ArtemA1ekseev)
+ - [Гатин Ильнур Харисович](https://github.com/ilnurGatin)
  
  ------
  
@@ -39,5 +40,6 @@ Telegram is a bot that can answer popular people's questions about what you need
  - [Subbotin Nikolay Yurievich](https://github.com/nusubbotin/)
  - [Bazarov Bulat Vladimirovich](https://github.com/qwsq4)
  - [Alekseyev Artem Alexandrovich](https://github.com/ArtemA1ekseev)
+ - [Gatin Ilnur Kharisovich](https://github.com/ilnurGatin)
  
  ------
