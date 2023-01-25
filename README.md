@@ -7,10 +7,10 @@ https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b
 
 Комада разработчиков "Half Java": 
 
-Макс Ефремчиков 
+- [Дениева Екатерина Юрьевна]([https://github.com/GoogleCloudPlatform](https://github.com/Katy7711))
 
-Лодочников Антон 
+- [Субботин Николай Юрьевич]([https://github.com/GoogleCloudPlatform](https://github.com/nusubbotin/))
 
-Гонцова Ольга
+- [Базаров Булат Владимирович]([https://github.com/GoogleCloudPlatform](https://github.com/qwsq4))
  
 # telegram-bot-animal-shelter
