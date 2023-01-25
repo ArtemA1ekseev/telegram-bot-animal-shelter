@@ -11,5 +11,6 @@ https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b
  - [Дениева Екатерина Юрьевна](https://github.com/Katy7711)
  - [Субботин Николай Юрьевич](https://github.com/nusubbotin/)
  - [Базаров Булат Владимирович](https://github.com/qwsq4)
+ - [Алексеев Артем Александрович](https://github.com/ArtemA1ekseev)
  
 # telegram-bot-animal-shelter
