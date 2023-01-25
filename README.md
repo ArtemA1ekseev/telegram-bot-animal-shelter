@@ -8,8 +8,8 @@ https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b
 
 ## Комада разработчиков "Half Java":
 
- - [Дениева Екатерина Юрьевна]([https://github.com/GoogleCloudPlatform](https://github.com/Katy7711)
- - [Субботин Николай Юрьевич]([https://github.com/GoogleCloudPlatform](https://github.com/nusubbotin/)
- - [Базаров Булат Владимирович]([https://github.com/GoogleCloudPlatform](https://github.com/qwsq4)
+ - [Дениева Екатерина Юрьевна]([https://github.com/GoogleCloudPlatform](https://github.com/Katy7711))
+ - [Субботин Николай Юрьевич]([https://github.com/GoogleCloudPlatform](https://github.com/nusubbotin/))
+ - [Базаров Булат Владимирович]([https://github.com/GoogleCloudPlatform](https://github.com/qwsq4))
  
 # telegram-bot-animal-shelter
