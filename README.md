@@ -1,4 +1,5 @@
-![Лого](https://user-images.githubusercontent.com/113195869/214584551-61f845b0-7520-4563-ab74-d8a87cc36187.PNG)
+![Лого](https://user-images.githubusercontent.com/113195869/214586763-583fdcfe-81dd-4a6f-9aa0-bef4ef76ea49.PNG)
+
 # (RU)
 ## Групповая работа с Java. Команда №4. Поток - DSprint 3.0.
 
