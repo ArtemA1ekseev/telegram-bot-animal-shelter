@@ -13,4 +13,6 @@ https://skyengpublic.notion.site/3652425ee83e408dac6a734cffaae96b
  - [Базаров Булат Владимирович](https://github.com/qwsq4)
  - [Алексеев Артем Александрович](https://github.com/ArtemA1ekseev)
  
+ ------
+ 
 # telegram-bot-animal-shelter
