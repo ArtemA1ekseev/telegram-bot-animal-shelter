@@ -67,6 +67,6 @@ public class ShelterVolunteer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(volunteerChatId, volunteerName, volunteerTrackingUsers);
+        return Objects.hash(volunteerId, volunteerChatId, volunteerName, volunteerTrackingUsers);
     }
 }

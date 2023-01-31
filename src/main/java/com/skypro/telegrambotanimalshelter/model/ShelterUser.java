@@ -14,7 +14,7 @@ public class ShelterUser {
     private Long userId;
 
     @Column(name = "shelter_user_chat_id")
-    private Long userChatId
+    private Long userChatId;
 
     @Column(name = "shelter_user_name")
     private String userName;
