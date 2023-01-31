@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  * A <b>custom</b> class that implements <b>buttons</b> in the telegram bot interface.
  * @author Artem Alekseev
  * @version 0.1.1
+ * @data 01.02.2023
  */
 @Service
 public class KeyBoardShelter {
