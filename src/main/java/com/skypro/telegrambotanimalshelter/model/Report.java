@@ -8,6 +8,13 @@ import java.awt.*;
 import java.util.Date;
 import java.util.Objects;
 
+/** Used for daily reports from clients
+ * <br>
+ * Properties: <b>id</b>, <b>reportDate</b>, <b>petDiet</b>, <b>description</b>
+ * @see Client
+ * @version 0.0.1
+ * @author i.gatin
+ */
 @Entity
 public class Report {
 
@@ -17,7 +24,6 @@ public class Report {
 
     private Date reportDate;
     private String petDiet;
-    //private Photo image;
     private String description;
 
     @OneToOne(fetch = FetchType.LAZY)
