@@ -3,21 +3,20 @@ package com.skypro.telegrambotanimalshelter.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
- * Class Pet describes an animals which are available for adoption by Clients
+ * Class Pet describes an animals which are available for adoption by Users
  * <br>
  * Properties: <b>id</b>, <b>petKind</b>, <b>breed</b>, <b>petColor</b>, <b>petName</b>,
  * <b>petAge</b>, <b>recieptDate</b>
- * @see Client
+ * @see User
  * @version 0.0.1
  * @author i.gatin
  */
 @Entity
 public class Pet {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -32,16 +31,16 @@ public class Pet {
     private int petAge;
 
     //Date when pet registered in shelter
-    private Date recieptDate;
+    private LocalDateTime recieptDate;
 
     /**
      * Describes which client is attached to
-     * @see Client
+     * @see User
      */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     @JsonBackReference
-    private Client client;
+    private User user;
 
     /**
      * Constructor - creates an instance of Pet class with parameters
@@ -53,7 +52,7 @@ public class Pet {
      * @param petAge
      * @param recieptDate
      */
-    public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, Date recieptDate) {
+    public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, LocalDateTime recieptDate) {
         this.id = id;
         this.petKind = petKind;
         this.breed = breed;
@@ -117,20 +116,20 @@ public class Pet {
         this.petAge = petAge;
     }
 
-    public Date getRecieptDate() {
+    public LocalDateTime getRecieptDate() {
         return recieptDate;
     }
 
-    public void setRecieptDate(Date recieptDate) {
+    public void setRecieptDate(LocalDateTime recieptDate) {
         this.recieptDate = recieptDate;
     }
 
-    public Client getClient() {
-        return client;
+    public User getClient() {
+        return user;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

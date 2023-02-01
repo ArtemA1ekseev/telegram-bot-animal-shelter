@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "shelter_volunteer")
-public class ShelterVolunteer {
+public class Volunteer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -20,13 +20,13 @@ public class ShelterVolunteer {
     private String volunteerName;
 
     @OneToMany
-    Collection<ShelterUser> volunteerTrackingUsers;
+    Collection<User> volunteerTrackingUsers;
 
     public Long getVolunteerId() {
         return volunteerId;
     }
 
-    public Collection<ShelterUser> getVolunteerTrackingUsers() {
+    public Collection<User> getVolunteerTrackingUsers() {
         return volunteerTrackingUsers;
     }
 
@@ -57,7 +57,7 @@ public class ShelterVolunteer {
 
     @Override
     public boolean equals(Object o) {
-        ShelterVolunteer that = (ShelterVolunteer) o;
+        Volunteer that = (Volunteer) o;
         if (hashCode() != that.hashCode()) return false;
         if (!Objects.equals(volunteerId, that.volunteerId)) return false;
         if (this == o) return true;
