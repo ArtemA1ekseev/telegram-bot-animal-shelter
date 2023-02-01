@@ -17,7 +17,6 @@ import java.util.Objects;
  */
 @Entity
 public class Pet {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
