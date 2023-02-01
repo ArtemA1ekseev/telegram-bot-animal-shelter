@@ -4,7 +4,7 @@ package com.skypro.telegrambotanimalshelter.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -34,14 +34,14 @@ public class Pet {
     /*
     Дата поступления животного
     */
-    private Date recieptDate;
+    private LocalDateTime recieptDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "shelter_user_id")
     @JsonBackReference
-    private Client client;
+    private User user;
 
-    public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, Date recieptDate) {
+    public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, LocalDateTime recieptDate) {
         this.id = id;
         this.petKind = petKind;
         this.breed = breed;
@@ -103,20 +103,20 @@ public class Pet {
         this.petAge = petAge;
     }
 
-    public Date getRecieptDate() {
+    public LocalDateTime getRecieptDate() {
         return recieptDate;
     }
 
-    public void setRecieptDate(Date recieptDate) {
+    public void setRecieptDate(LocalDateTime recieptDate) {
         this.recieptDate = recieptDate;
     }
 
-    public Client getClient() {
-        return client;
+    public User getUser() {
+        return user;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

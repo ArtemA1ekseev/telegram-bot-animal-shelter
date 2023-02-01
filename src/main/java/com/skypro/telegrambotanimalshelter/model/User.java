@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "shelter_user")
-public class ShelterUser {
+public class User {
 
     @Id
     @GeneratedValue
@@ -34,7 +34,7 @@ public class ShelterUser {
     @OneToMany
     private Collection<Pet> userAdoptedPets;
 
-    public ShelterUser() {
+    public User() {
     }
 
     public Long getUserId() {
@@ -73,12 +73,24 @@ public class ShelterUser {
         this.userAddress = userAddress;
     }
 
-    public String getUserPhane() {
+    public boolean isUserAbleToAdoptPet() {
+        return userAbleToAdoptPet;
+    }
+
+    public void setUserAbleToAdoptPet(boolean userAbleToAdoptPet) {
+        this.userAbleToAdoptPet = userAbleToAdoptPet;
+    }
+
+    public String getUserPhone() {
         return userPhone;
     }
 
-    public void setUserPhane(String userPhane) {
+    public void setUserPhone(String userPhane) {
         this.userPhone = userPhane;
+    }
+
+    public Collection<Pet> getUserAdoptedPets() {
+        return userAdoptedPets;
     }
 
     @Override
@@ -94,7 +106,7 @@ public class ShelterUser {
 
     @Override
     public boolean equals(Object o) {
-        ShelterUser that = (ShelterUser) o;
+        User that = (User) o;
         if (this.hashCode() != that.hashCode()) return false;
         if (!Objects.equals(userId, that.userId)) return false;
         if (this == o) return true;
