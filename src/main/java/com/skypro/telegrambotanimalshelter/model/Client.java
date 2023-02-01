@@ -6,6 +6,12 @@ import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * Class of potential adopter with properties <b>id</b>, <b>firstName</b>, <b>lastName</b>, <b>phoneNumber</b>,
+ * <b>age</b>, <b>documentsProvided</b>
+ * @version 0.0.1
+ * @author i.gatin
+ */
 @Entity
 public class Client {
 
@@ -20,20 +26,36 @@ public class Client {
 
     private int age;
 
-    /*
-    Можно по этому флагу выдавать разрешение на "усыновление"
-     или использовать как маркер пройден ли испытательный период
+    /**
+     * Can be used to issue permission for "adoption" or use as a marker whether the trial period has passed
      */
     private Boolean documentsProvided;
 
+    /**
+     * A set of reports which client have to provide daile while in trial period
+     * @see Report
+      */
     @OneToMany(mappedBy = "client")
     @JsonBackReference
     private Set<Report> report;
 
+    /**
+     * A set of pets which client has adopted
+     * @see Pet
+      */
     @OneToMany(mappedBy = "client")
     @JsonBackReference
     private Set<Pet> pet;
 
+    /**
+     * Constructor - creates new instance of Client class whith parameters
+      * @param id
+     * @param firstName
+     * @param lastName
+     * @param phoneNumber
+     * @param age
+     * @param documentsProvided
+     */
     public Client(Long id, String firstName, String lastName, String phoneNumber, int age, Boolean documentsProvided) {
         this.id = id;
         this.firstName = firstName;
@@ -44,8 +66,10 @@ public class Client {
 
     }
 
+    /**
+     * Constructor - creates an instance of Client class
+      */
     public Client() {
-
     }
 
     public Long getId() {
