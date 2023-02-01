@@ -1,46 +1,58 @@
 package com.skypro.telegrambotanimalshelter.model;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
+/**
+ * Class Pet describes an animals which are available for adoption by Clients
+ * <br>
+ * Properties: <b>id</b>, <b>petKind</b>, <b>breed</b>, <b>petColor</b>, <b>petName</b>,
+ * <b>petAge</b>, <b>recieptDate</b>
+ * @see Client
+ * @version 0.0.1
+ * @author i.gatin
+ */
 @Entity
 public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    /*
-    В этом поле можно указывать вид животного: собака, кошка и т.д.
-    */
+
     private String petKind;
 
-    /*
-    Порода животного
-    */
     private String breed;
 
-    /*
-    Окрас животного
-    */
     private String petColor;
 
     private String petName;
     private int petAge;
 
-    /*
-    Дата поступления животного
-    */
+    //Date when pet registered in shelter
     private Date recieptDate;
 
+    /**
+     * Describes which client is attached to
+     * @see Client
+     */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")
     @JsonBackReference
     private Client client;
 
+    /**
+     * Constructor - creates an instance of Pet class with parameters
+     * @param id
+     * @param petKind
+     * @param breed
+     * @param petColor
+     * @param petName
+     * @param petAge
+     * @param recieptDate
+     */
     public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, Date recieptDate) {
         this.id = id;
         this.petKind = petKind;
@@ -51,8 +63,10 @@ public class Pet {
         this.recieptDate = recieptDate;
     }
 
+    /**
+     * Constructor - creates an instance of Pet class with parameters
+      */
     public Pet() {
-
     }
 
     public Long getId() {
