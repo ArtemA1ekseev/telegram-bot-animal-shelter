@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
  * @author Artem Alekseev
  * @version 0.1.1
  * @data 01.02.2023
+ * @
  */
 @Service
 public class KeyBoardShelter {
