@@ -16,14 +16,14 @@ public class PetService {
         this.repository = repository;
     }
 
-    public void addPet(String petKind, String breed, String petColor, String petName, int petAge) {
+    public void addPet(String petKind, String petBreed, String petColor, String petName, int petAge) {
         Pet pet = new Pet();
         pet.setPetKind(petKind);
-        pet.setBreed(breed);
+        pet.setPetBreed(petBreed);
         pet.setPetColor(petColor);
         pet.setPetName(petName);
         pet.setPetAge(petAge);
-        pet.setRecieptDate(LocalDateTime.now());
+        pet.setPetRecieptDate(LocalDateTime.now());
         repository.save(pet);
     }
 

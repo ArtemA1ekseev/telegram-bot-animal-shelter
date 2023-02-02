@@ -9,57 +9,64 @@ import java.util.Objects;
 /**
  * Class Pet describes an animals which are available for adoption by Users
  * <br>
- * Properties: <b>id</b>, <b>petKind</b>, <b>breed</b>, <b>petColor</b>, <b>petName</b>,
- * <b>petAge</b>, <b>recieptDate</b>
+ * Properties: <b>id</b>, <b>petKind</b>, <b>petBreed</b>, <b>petColor</b>, <b>petName</b>,
+ * <b>petAge</b>, <b>petRecieptDate</b>
  * @see User
  * @version 0.0.1
  * @author i.gatin
  */
 @Entity
+@Table(name = "shelter_pet")
 public class Pet {
     @Id
+    @Column(name = "shelter_pet_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "shelter_pet_kind")
     private String petKind;
 
-    private String breed;
+    @Column(name = "shelter_pet_breed")
+    private String petBreed;
 
+    @Column(name = "shelter_pet_color")
     private String petColor;
 
+    @Column(name = "shelter_pet_name")
     private String petName;
+
+    @Column(name = "shelter_pet_age")
     private int petAge;
 
     //Date when pet registered in shelter
-    private LocalDateTime recieptDate;
+    @Column(name = "shelter_pet_reciept_date")
+    private LocalDateTime petRecieptDate;
 
     /**
-     * Describes which client is attached to
+     * Describes which user is attached to
      * @see User
      */
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "shelter_user_id")
     @JsonBackReference
     private User user;
 
     /**
      * Constructor - creates an instance of Pet class with parameters
-     * @param id
      * @param petKind
-     * @param breed
+     * @param petBreed
      * @param petColor
      * @param petName
      * @param petAge
-     * @param recieptDate
+     * @param petRecieptDate
      */
-    public Pet(Long id, String petKind, String breed, String petColor, String petName, int petAge, LocalDateTime recieptDate) {
-        this.id = id;
+    public Pet(String petKind, String petBreed, String petColor, String petName, int petAge, LocalDateTime petRecieptDate) {
         this.petKind = petKind;
-        this.breed = breed;
+        this.petBreed = petBreed;
         this.petColor = petColor;
         this.petName = petName;
         this.petAge = petAge;
-        this.recieptDate = recieptDate;
+        this.petRecieptDate = petRecieptDate;
     }
 
     /**
@@ -84,12 +91,12 @@ public class Pet {
         this.petKind = petKind;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getPetBreed() {
+        return petBreed;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
+    public void setPetBreed(String petBreed) {
+        this.petBreed = petBreed;
     }
 
     public String getPetColor() {
@@ -116,12 +123,12 @@ public class Pet {
         this.petAge = petAge;
     }
 
-    public LocalDateTime getRecieptDate() {
-        return recieptDate;
+    public LocalDateTime getPetRecieptDate() {
+        return petRecieptDate;
     }
 
-    public void setRecieptDate(LocalDateTime recieptDate) {
-        this.recieptDate = recieptDate;
+    public void setPetRecieptDate(LocalDateTime petRecieptDate) {
+        this.petRecieptDate = petRecieptDate;
     }
 
     public User getClient() {
