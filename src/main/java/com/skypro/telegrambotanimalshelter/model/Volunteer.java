@@ -4,6 +4,14 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Class Volunteer describes shelter volunteers, who need to help the user with an adoption
+ * <br>
+ * Properties: <b>volunteerId</b>, <b>volunteerChatId</b>, <b>volunteerName</b>, <b>volunteerTrackingUsers</b>
+ * @see User
+ * @version 0.0.1
+ * @author Bulat Bazarov
+ */
 @Entity
 @Table(name = "shelter_volunteer")
 public class Volunteer {
@@ -19,8 +27,30 @@ public class Volunteer {
     @Column(name = "shelter_volunteer_name")
     private String volunteerName;
 
+    /**
+     * Describes users which volunteer follows
+     * @see User
+     */
     @OneToMany
     Collection<User> volunteerTrackingUsers;
+
+    /**
+     * Constructor - creates an instance of Volunteer class with parameters
+     * @param volunteerChatId
+     * @param volunteerName
+     * @param volunteerTrackingUsers
+     */
+    public Volunteer(Long volunteerChatId, String volunteerName, Collection<User> volunteerTrackingUsers) {
+        this.volunteerChatId = volunteerChatId;
+        this.volunteerName = volunteerName;
+        this.volunteerTrackingUsers = volunteerTrackingUsers;
+    }
+
+    /**
+     * Constructor - creates an instance of Volunteer class without parameters
+     */
+    public Volunteer() {
+    }
 
     public Long getVolunteerId() {
         return volunteerId;

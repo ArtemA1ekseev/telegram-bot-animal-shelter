@@ -6,6 +6,9 @@ import com.skypro.telegrambotanimalshelter.model.User;
 import com.skypro.telegrambotanimalshelter.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service
+ */
 @Service
 public class UserService {
 
