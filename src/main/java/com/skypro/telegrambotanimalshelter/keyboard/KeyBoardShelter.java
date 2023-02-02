@@ -101,7 +101,7 @@ public class KeyBoardShelter {
         logger.info("Method sendMenuInfoShelter has been run: {}, {}", chatId, "Вызвали Информация о приюте");
 
         ReplyKeyboardMarkup replyKeyboardMarkup2 = new ReplyKeyboardMarkup(new KeyboardButton("Кидает на статью"),
-                new KeyboardButton("Оставить контактные данные"));
+                new KeyboardButton("Оставить контактные данные").requestContact(true));
         replyKeyboardMarkup2.addRow(new KeyboardButton("Позвать волонтера"),
                 new KeyboardButton("Вернуться в меню"));
 
