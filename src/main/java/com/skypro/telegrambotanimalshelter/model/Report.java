@@ -4,14 +4,14 @@ package com.skypro.telegrambotanimalshelter.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.Date;
 import java.util.Objects;
 
 /** Used for daily reports from clients
  * <br>
- * Properties: <b>id</b>, <b>reportDate</b>, <b>petDiet</b>, <b>description</b>
- * @see Client
+ * Properties: <b>id</b>, <b>reportDate</b>, <b>petDiet</b>, <b>description</b>, <b>photo</b>
+ * @see User
+ * @see Photo
  * @version 0.0.1
  * @author i.gatin
  */
@@ -25,16 +25,27 @@ public class Report {
     private Date reportDate;
     private String petDiet;
     private String description;
+    private Photo photo;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pet_id")
+    @JoinColumn(name = "shelter_pet_id")
     @JsonBackReference
     private Pet pet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "shelter_user_id")
     @JsonBackReference
-    private Client client;
+    private User user;
+
+    public Report(Date reportDate, String petDiet, String description, Photo photo) {
+        this.reportDate = reportDate;
+        this.petDiet = petDiet;
+        this.description = description;
+        this.photo = photo;
+    }
+
+    public Report() {
+    }
 
     public Long getId() {
         return id;
@@ -66,6 +77,14 @@ public class Report {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
     }
 
     @Override
