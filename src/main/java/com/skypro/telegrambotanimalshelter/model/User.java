@@ -4,6 +4,15 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Class User describes shelter users, who can adopt a pet
+ * <br>
+ * Properties: <b>userId</b>, <b>userChatId</b>, <b>userName</b>, <b>userAge</b>, <b>userAddress</b>,
+ * <b>userPhone</b>, <b>userAbleAdoptPet</b>, <b>userAdoptedPets</b>
+ * @see Pet
+ * @version 0.0.1
+ * @author Bulat Bazarov
+ */
 @Entity
 @Table(name = "shelter_user")
 public class User {
@@ -31,6 +40,10 @@ public class User {
     @Column(name = "shelter_user_able_adopt_pet")
     private boolean userAbleToAdoptPet;
 
+    /**
+     * Describes pets adopted by user
+     * @see Pet
+     */
     @OneToMany
     private Collection<Pet> userAdoptedPets;
 
@@ -41,6 +54,28 @@ public class User {
         this.userChatId = userChatId;
         this.userName = userName;
         this.userPhone = userPhone;
+    /**
+     * Constructor - creates an instance of User class with parameters
+     * @param userChatId
+     * @param userName
+     * @param userAge
+     * @param userAddress
+     * @param userPhone
+     * @param userAbleToAdoptPet
+     */
+    public User(Long userChatId, String userName, int userAge, String userAddress, String userPhone, boolean userAbleToAdoptPet) {
+        this.userChatId = userChatId;
+        this.userName = userName;
+        this.userAge = userAge;
+        this.userAddress = userAddress;
+        this.userPhone = userPhone;
+        this.userAbleToAdoptPet = userAbleToAdoptPet;
+    }
+
+    /**
+     * Constructor - creates an instance of User class without parameters
+     */
+    public User() {
     }
 
     public Long getUserId() {
