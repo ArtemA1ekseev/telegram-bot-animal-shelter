@@ -17,8 +17,8 @@ public class UserService {
         this.repository = repository;
     }
 
-    public void addUser(Long chatId, int age, String address, String phone) {
-        User user = new User();
+    public void addUser(Long chatId, int age, String address, String phone, String name) {
+        User user = new User(name, phone, chatId);
         user.setUserChatId(chatId);
         user.setUserAge(age);
         user.setUserAddress(address);

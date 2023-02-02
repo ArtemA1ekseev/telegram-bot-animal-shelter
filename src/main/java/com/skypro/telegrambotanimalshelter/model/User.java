@@ -34,7 +34,13 @@ public class User {
     @OneToMany
     private Collection<Pet> userAdoptedPets;
 
-    public User() {
+    public User(String name, String phone, long chatId) {
+    }
+
+    public User(Long userChatId, String userName, String userPhone) {
+        this.userChatId = userChatId;
+        this.userName = userName;
+        this.userPhone = userPhone;
     }
 
     public Long getUserId() {

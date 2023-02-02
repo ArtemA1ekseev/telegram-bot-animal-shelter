@@ -6,15 +6,19 @@ import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
+import com.skypro.telegrambotanimalshelter.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.skypro.telegrambotanimalshelter.keyboard.KeyBoardShelter;
+import com.skypro.telegrambotanimalshelter.repository.UserRepository;
 
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 /**
  * A <b>custom</b> class that implements communication between a user and a <b>Telegram-bot</b>. Allows you to catch the main changes in the behavior of the bot.
@@ -33,6 +37,9 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     private static final String GREETING_TEXT = ", Приветствую! Чтобы найти то, что тебе нужно - нажми на нужную кнопку";
 
     //private static final String INVALID_ID_NOTIFY_OR_CMD = "Такой команды не существует";
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private KeyBoardShelter keyBoardShelter;
@@ -63,16 +70,34 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
             String nameUser = update.message().chat().firstName();
             String textUpdate = update.message().text();
             Integer messageId = update.message().messageId();
-            Long VolonterChat = 440504531L;
-            //String getPhone = update.message().contact().phoneNumber();
+            Long VolunteerChat = 440504531L;
 
-            String phone = "";
+            // @data 02.02.2023 17:08
+            if (update.message().contact().phoneNumber() != null) {
+                String firstName = update.message().contact().firstName();
+                String lastName = update.message().contact().lastName();
+                String phone = update.message().contact().phoneNumber();
+                long chatId = update.message().chat().id();
+                var sortChatId = userRepository.findAll().stream().filter(i -> i.getUserChatId() == chatId)
+                        .collect(Collectors.toList());
+                if (!sortChatId.isEmpty()) {
+                    sendMessage(chatId, "Вы уже в базе");
+                    return;
+                }
+                if (lastName != null) {
+                    String name = firstName + " " + lastName;
+                    userRepository.save(new User(name, phone, chatId));
+                    return;
+                }
+                userRepository.save(new User(firstName, phone, chatId));
+                return;
+            }
 
             //phone = update.message().contact().phoneNumber();
             //if (phone != null) {
             //
-                //sendMessage(VolonterChat, "Тут перезвонить надо " + phone + " " + nameUser);
-                //System.out.println(phone);
+            //sendMessage(VolunteerChat, "Тут перезвонить надо " + phone + " " + nameUser);
+            //System.out.println(phone);
             //}
 
             Integer message123 = update.message().forwardFromMessageId();
@@ -98,9 +123,9 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                             sendReplyMessage(chatId, "И тебе привет", messageId);
                             break;
                         }
-//                    case "Позвать волонтера":
-//                            sendReplyMessage(VolonterChat, "Тут перезвонить надо " + phone, messageId);
-//                            break;
+                    //case "Позвать волонтера":
+                        //sendReplyMessage(VolunteerChat, "Тут перезвонить надо " + phone, messageId);
+                        //break;
                     case "Contact":
                         if (messageId != null) {
                             sendReplyMessage(chatId, "123", messageId);
@@ -116,11 +141,11 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                         break;
 
                     default:
-//                        if (messageId != null) {
-//                        message.replyToMessage().text();
-//                        sendMsg(message, "Скоро вам ответят");
+                        //if (messageId != null) {
+                        //message.replyToMessage().text();
+                        //sendMsg(message, "Скоро вам ответят");
                         sendReplyMessage(chatId, "Я не знаю такой команды", messageId);
-//                        }
+                        //}
                         break;
 
                 }
@@ -130,6 +155,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
             }
 
         });
+
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
     }
 
@@ -164,5 +190,4 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
         sendMessage.replyToMessageId(message.messageId());
         SendResponse sendResponse = telegramBot.execute(sendMessage);
     }
-
 }
