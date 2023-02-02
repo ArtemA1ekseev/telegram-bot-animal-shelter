@@ -9,6 +9,8 @@ import java.util.Objects;
 
 /** Used for daily reports from clients
  * <br>
+ * Properties: <b>id</b>, <b>reportDate</b>, <b>petDiet</b>, <b>description</b>
+ * @see User
  * Properties: <b>id</b>, <b>reportDate</b>, <b>petDiet</b>, <b>description</b>, <b>photo</b>
  * @see User
  * @see Photo
@@ -21,11 +23,20 @@ public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
     private Date reportDate;
     private String petDiet;
     private String description;
     private Photo photo;
+
+    private String filePath;
+
+    private long fileSize;
+
+    private String mediaType;
+
+    @Lob
+    private byte[] data;
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shelter_pet_id")
@@ -34,6 +45,7 @@ public class Report {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shelter_user_id")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
@@ -46,6 +58,7 @@ public class Report {
 
     public Report() {
     }
+    private User user;
 
     public Long getId() {
         return id;
@@ -85,6 +98,38 @@ public class Report {
 
     public void setPhoto(Photo photo) {
         this.photo = photo;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public String getMediaType() {
+        return mediaType;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
     @Override
