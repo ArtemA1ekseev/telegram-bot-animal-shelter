@@ -21,7 +21,7 @@ import java.util.Objects;
 public class Report {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date reportDate;
     private String petDiet;
@@ -58,7 +58,6 @@ public class Report {
 
     public Report() {
     }
-    private User user;
 
     public Long getId() {
         return id;

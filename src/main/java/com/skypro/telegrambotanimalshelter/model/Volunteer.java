@@ -17,7 +17,7 @@ import java.util.Objects;
 public class Volunteer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shelter_volunteer_id")
     private Long volunteerId;
 

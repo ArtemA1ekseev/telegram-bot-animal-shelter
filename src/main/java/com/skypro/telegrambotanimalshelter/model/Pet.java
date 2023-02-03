@@ -20,7 +20,7 @@ import java.util.Objects;
 public class Pet {
     @Id
     @Column(name = "shelter_pet_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "shelter_pet_kind")
@@ -53,6 +53,8 @@ public class Pet {
 
     /**
      * Constructor - creates an instance of Pet class with parameters
+     *
+     * @param id
      * @param petKind
      * @param petBreed
      * @param petColor
@@ -60,7 +62,7 @@ public class Pet {
      * @param petAge
      * @param petRecieptDate
      */
-    public Pet(String petKind, String petBreed, String petColor, String petName, int petAge, LocalDateTime petRecieptDate) {
+    public Pet(Long id, String petKind, String petBreed, String petColor, String petName, int petAge, LocalDateTime petRecieptDate) {
         this.petKind = petKind;
         this.petBreed = petBreed;
         this.petColor = petColor;

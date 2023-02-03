@@ -18,7 +18,7 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shelter_user_id")
     private Long userId;
 
@@ -47,13 +47,6 @@ public class User {
     @OneToMany
     private Collection<Pet> userAdoptedPets;
 
-    public User(String name, String phone, long chatId) {
-    }
-
-    public User(Long userChatId, String userName, String userPhone) {
-        this.userChatId = userChatId;
-        this.userName = userName;
-        this.userPhone = userPhone;
     /**
      * Constructor - creates an instance of User class with parameters
      * @param userChatId
@@ -75,6 +68,10 @@ public class User {
     /**
      * Constructor - creates an instance of User class without parameters
      */
+    public User(String name, String phone, long chatId) {
+
+    }
+
     public User() {
     }
 

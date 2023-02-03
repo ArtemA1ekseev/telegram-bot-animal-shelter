@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Photo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String filePath;
     private long fileSize;
