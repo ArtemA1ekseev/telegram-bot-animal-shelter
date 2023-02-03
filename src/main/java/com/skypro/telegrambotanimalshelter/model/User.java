@@ -54,6 +54,7 @@ public class User {
         this.userChatId = userChatId;
         this.userName = userName;
         this.userPhone = userPhone;
+    }
     /**
      * Constructor - creates an instance of User class with parameters
      * @param userChatId
