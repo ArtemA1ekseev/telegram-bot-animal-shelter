@@ -21,5 +21,6 @@ CREATE TABLE shelter_pet
     "shelter_pet_color"        character varying(255),
     "shelter_pet_name"         character varying(255),
     "shelter_pet_age"          bigint,
-    "shelter_pet_reciept_date" timestamp
+    "shelter_pet_reciept_date" timestamp,
+    PRIMARY KEY (shelter_pet_id)
 );
