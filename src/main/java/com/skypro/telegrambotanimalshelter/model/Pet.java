@@ -60,7 +60,7 @@ public class Pet {
      * @param petAge
      * @param petRecieptDate
      */
-    public Pet(String petKind, String petBreed, String petColor, String petName, int petAge, LocalDateTime petRecieptDate) {
+    public Pet(Long id, String petKind, String petBreed, String petColor, String petName, int petAge, LocalDateTime petRecieptDate) {
         this.petKind = petKind;
         this.petBreed = petBreed;
         this.petColor = petColor;
