@@ -13,7 +13,6 @@ CREATE TABLE shelter_user
     PRIMARY KEY (shelter_user_id)
 );
 
-
 -- changeset bbazarov:2
 CREATE TABLE shelter_pet
 (
