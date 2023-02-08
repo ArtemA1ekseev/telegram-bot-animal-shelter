@@ -1,17 +1,20 @@
 package com.skypro.telegrambotanimalshelter.controller;
 
+import com.skypro.telegrambotanimalshelter.model.Cat;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.extensions.Extension;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import com.skypro.telegrambotanimalshelter.listener.TelegramBotUpdatesListener;
 import com.skypro.telegrambotanimalshelter.model.ReportData;
 import com.skypro.telegrambotanimalshelter.service.ReportDataService;
 
+import java.nio.file.spi.FileTypeDetector;
 import java.util.Collection;
 
 /**
@@ -33,27 +36,74 @@ public class ReportDataController {
         this.reportDataService = reportDataService;
     }
 
-    @Operation(summary = "Просмотр отчетов по id")
+    @Operation(summary = "Просмотр отчетов по id",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Все отчеты",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ReportData.class)
+                            )
+                    )
+            },
+            tags = "Reports"
+    )
     @GetMapping("/{id}/report")
-    public ReportData downloadReport(@PathVariable Long id) {
+    public ReportData downloadReport(@Parameter (description = "report id") @PathVariable Long id) {
         return this.reportDataService.findById(id);
     }
 
-    @Operation(summary = "Удаление отчетов по id")
+    @Operation(summary = "Удаление отчетов по id",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Удаленный отчет",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ReportData.class)
+                            )
+                    )
+            },
+            tags = "Reports"
+    )
     @DeleteMapping("/{id}")
-    public void remove(@PathVariable Long id) {
+    public void remove(@Parameter (description = "report id") @PathVariable Long id) {
         this.reportDataService.remove(id);
     }
 
-    @Operation(summary = "Просмотр всех отчетов", description = "Просмотр всех отчетов, либо всех отчетов определенного пользователя по chat_id")
+    @Operation(summary = "Просмотр всех отчетов",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Все отчеты, либо отчеты определенного пользователя по chat_id",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ReportData.class)
+                            )
+                    )
+            },
+            tags = "Reports"
+    )
     @GetMapping("/getAll")
     public ResponseEntity<Collection<ReportData>> getAll() {
         return ResponseEntity.ok(this.reportDataService.getAll());
     }
 
-    @Operation(summary = "Просмотр фото по айди отчета")
+    @Operation(summary = "Просмотр фото по id отчета",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody (
+                    description = "Фото, найденное по id отчета",
+                    extensions = {
+                            @Extension(
+                                    properties =
+
+                            )
+                    }
+            ),
+            tags = "Report"
+    )
     @GetMapping("/{id}/photo-from-db")
-    public ResponseEntity<byte[]> downloadPhotoFromDB(@PathVariable Long id) {
+    public ResponseEntity<byte[]> downloadPhotoFromDB(@Parameter (description = "report id") @PathVariable Long id) {
         ReportData reportData = this.reportDataService.findById(id);
 
         HttpHeaders headers = new HttpHeaders();
@@ -63,8 +113,20 @@ public class ReportDataController {
         return ResponseEntity.status(HttpStatus.OK).headers(headers).body(reportData.getData());
     }
 
-    @Operation(summary = "Отправить сообщение пользователю", description = "Тут можно написать любое сообщение определенному пользователю." +
-            "Например сообщение о том, чтобы правильно заполнял форму отчета. Либо связался с волонтерами по номеру")
+    @Operation(summary = "Отправить сообщение пользователю",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Сообщение определенному пользователю." +
+                                    "Например сообщение о том, что необходимо правильно заполнять форму отчета. Либо связаться с волонтерами по номеру",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ReportData.class)
+                            )
+                    )
+            },
+        tags = "Reports"
+        )
     @GetMapping("/message-to-person")
     public void sendMessageToPerson(@Parameter(description = "id чата с пользователем", example = "3984892310")
                                     @RequestParam Long chat_Id,
