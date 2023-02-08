@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 /**
  * @author Artem Alekseev
  * @version 1.0.0
- * @data 31.01.2023
  */
 @Configuration
 @EnableScheduling
@@ -25,4 +24,5 @@ public class TelegramBotConfiguration {
         bot.execute(new DeleteMyCommands());
         return bot;
     }
+
 }
