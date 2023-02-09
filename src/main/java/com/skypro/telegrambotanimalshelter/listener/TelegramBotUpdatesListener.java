@@ -332,7 +332,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
         }
     }
 
-    /**\
+    /**
      * A method that allows you to receive reports.
      * @param update
      * @see TelegramBotUpdatesListener

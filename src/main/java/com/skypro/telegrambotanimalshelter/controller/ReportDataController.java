@@ -51,7 +51,7 @@ public class ReportDataController {
         return ResponseEntity.ok(this.reportDataService.getAll());
     }
 
-    @Operation(summary = "Просмотр фото по айди отчета")
+    @Operation(summary = "Просмотр фото по id отчета")
     @GetMapping("/{id}/photo-from-db")
     public ResponseEntity<byte[]> downloadPhotoFromDB(@PathVariable Long id) {
         ReportData reportData = this.reportDataService.findById(id);
