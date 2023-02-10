@@ -44,6 +44,12 @@
 
  ------
  
+  ## Демонстрация работы бота:
+  
+  - [Смотреть](https://drive.google.com/file/d/1fS8Fg9cAemrePRpWs8VENGA4wGH1FY7m/view?usp=sharing)
+  
+ ------
+ 
 # (EN)
 ## Group work with Java. Team No.4. The stream is DSprint 3.0.
 
@@ -86,4 +92,10 @@ Telegram is a bot that can answer popular people's questions about what you need
     - PostgreSQL
     - Liquibase
 
+ ------
+ 
+  ## Demonstration of the bot's work:
+  
+  - [Look](https://drive.google.com/file/d/1fS8Fg9cAemrePRpWs8VENGA4wGH1FY7m/view?usp=sharing)
+  
  ------
