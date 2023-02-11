@@ -3,22 +3,24 @@ package com.skypro.telegrambotanimalshelter.service;
 import com.skypro.telegrambotanimalshelter.exceptions.ReportDataNotFoundException;
 import com.skypro.telegrambotanimalshelter.model.ReportData;
 import com.skypro.telegrambotanimalshelter.repository.ReportDataRepository;
-import liquibase.pro.packaged.S;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Answers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.IOException;
-import java.time.Instant;
 import java.util.*;
 
 import static org.mockito.ArgumentMatchers.any;
 
+/**
+ * Class for testing ReportDataService
+ * @see ReportDataService
+ * @see ReportDataRepository
+ * @author Bazarov Bulat
+ */
 @ExtendWith(MockitoExtension.class)
 public class ReportDataServiceTest {
 
@@ -28,6 +30,11 @@ public class ReportDataServiceTest {
     @InjectMocks
     private ReportDataService reportDataService;
 
+    /**
+     * Test for method <b>findById()</b> in ReportDataService
+     * <br>
+     * Mockito: when <b>ReportDataRepository::findById</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void findByIdTest() {
         ReportData expected = new ReportData();
@@ -48,6 +55,11 @@ public class ReportDataServiceTest {
         Assertions.assertThat(actual.getCaption()).isEqualTo(expected.getCaption());
     }
 
+    /**
+     * Test for throwing an exception in method <b>findById()</b> in ReportDataService
+     * <br>
+     * Mockito: when <b>ReportDataRepository::findById()</b> method called, throws <b>ReportDataNotFoundException</b>
+     */
     @Test
     public void findByIdExceptionTest() {
         Mockito.when(reportDataRepositoryMock.findById(any(Long.class))).thenThrow(ReportDataNotFoundException.class);
@@ -55,6 +67,11 @@ public class ReportDataServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(ReportDataNotFoundException.class, () -> reportDataService.findById(1L));
     }
 
+    /**
+     * Test for method <b>findByChatId()</b> in ReportDataService
+     * <br>
+     * Mockito: when <b>ReportDataRepository::findByChatId()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void findByChatIdTest() {
         ReportData expected = new ReportData();
@@ -75,6 +92,11 @@ public class ReportDataServiceTest {
         Assertions.assertThat(actual.getCaption()).isEqualTo(expected.getCaption());
     }
 
+    /**
+     * Test for method <b>findListByChatId()</b> in ReportDataService
+     * <br>
+     * Mockito: when <b>ReportDataRepository::findListByChatId()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void findListByChatIdTest() {
         Set<ReportData> expected = new HashSet<>();
@@ -111,6 +133,11 @@ public class ReportDataServiceTest {
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 
+    /**
+     * Test for method <b>getAll()</b> in ReportDataService
+     * <br>
+     * Mockito: when <b>ReportDataRepository::findAll()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void findAllTest() {
         List<ReportData> expected = new ArrayList<>();

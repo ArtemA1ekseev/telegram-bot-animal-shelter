@@ -18,6 +18,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Class for testing DogController
+ * @see DogService
+ * @author Artem Alekseev
+ */
 @WebMvcTest(DogController.class)
 class DogControllerTest {
 
@@ -27,6 +32,12 @@ class DogControllerTest {
     @MockBean
     private DogService dogService;
 
+    /**
+     * Test for <b>getById()</b> method in DogController
+     * <br>
+     * Mockito: when <b>DogService::getById()</b> method called, returns <b>dog</b> object
+     * @throws Exception
+     */
     @Test
     void getById() throws Exception {
         Dog dog = new Dog();
@@ -42,6 +53,12 @@ class DogControllerTest {
         verify(dogService).getById(1L);
     }
 
+    /**
+     * Test for <b>save()</b> method in DogController
+     * <br>
+     * Mockito: when <b>DogService::create()</b> method called, returns <b>dog</b> object
+     * @throws Exception
+     */
     @Test
     void save() throws Exception {
         Dog dog = new Dog();
@@ -63,6 +80,12 @@ class DogControllerTest {
         verify(dogService).create(dog);
     }
 
+    /**
+     * Test for <b>update()</b> method in DogController
+     * <br>
+     * Mockito: when <b>DogService::getById()</b> method called, returns <b>dog</b> object
+     * @throws Exception
+     */
     @Test
     void update() throws Exception {
         Dog dog = new Dog();
@@ -84,6 +107,10 @@ class DogControllerTest {
         verify(dogService).update(dog);
     }
 
+    /**
+     * Test for <b>remove()</b> method in DogController
+     * @throws Exception
+     */
     @Test
     void remove() throws Exception {
         mockMvc.perform(
@@ -92,6 +119,12 @@ class DogControllerTest {
         verify(dogService).removeById(1L);
     }
 
+    /**
+     * Test for <b>getAll()</b> method in DogController
+     * <br>
+     * Mockito: when <b>DogService::getAll()</b> method called, returns collection with <b>new Dog</b> object
+     * @throws Exception
+     */
     @Test
     void getAll() throws Exception {
         when(dogService.getAll()).thenReturn(List.of(new Dog()));

@@ -2,6 +2,7 @@ package com.skypro.telegrambotanimalshelter.service;
 
 import com.skypro.telegrambotanimalshelter.exceptions.DogNotFoundException;
 import com.skypro.telegrambotanimalshelter.model.Dog;
+import com.skypro.telegrambotanimalshelter.repository.CatRepository;
 import com.skypro.telegrambotanimalshelter.repository.DogRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,12 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 
+/**
+ * Class for testing DogService
+ * @see DogService
+ * @see DogRepository
+ * @author Bazarov Bulat
+ */
 @ExtendWith(MockitoExtension.class)
 public class DogServiceTest {
 
@@ -27,6 +34,11 @@ public class DogServiceTest {
     @InjectMocks
     private DogService dogService;
 
+    /**
+     * Test for method <b>getById()</b> in DogService
+     * <br>
+     * Mockito: when <b>DogRepository::findById()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void getByIdTest() {
         Dog expected = new Dog();
@@ -45,6 +57,11 @@ public class DogServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for throwing an exception in method <b>getById()</b> in DogService
+     * <br>
+     * Mockito: when <b>DogRepository::findById()</b> method called, throws <b>DogNotFoundException</b>
+     */
     @Test
     public void getByIdExceptionTest() {
         Mockito.when(dogRepositoryMock.findById(1L)).thenThrow(DogNotFoundException.class);
@@ -52,6 +69,11 @@ public class DogServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(DogNotFoundException.class, () -> dogService.getById(1L));
     }
 
+    /**
+     * Test for method <b>create()</b> in DogService
+     * <br>
+     * Mockito: when <b>DogRepository::save()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void createTest() {
         Dog expected = new Dog();
@@ -70,6 +92,13 @@ public class DogServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for method <b>update()</b> in DogService
+     * <br>
+     * Mockito: when <b>DogRepository::save()</b> method called, returns <b>expected</b> object
+     * <br>
+     * Mockito: when <b>DogRepository::findById()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void updateTest() {
         Dog expected = new Dog();
@@ -90,6 +119,11 @@ public class DogServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for throwing an exception in method <b>update()</b> in DogService
+     * <br>
+     * Creating a <b>Dog</b> object with null id
+     */
     @Test
     public void updateExceptionTest() {
         Dog expected = new Dog();
@@ -97,6 +131,11 @@ public class DogServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(DogNotFoundException.class, () -> dogService.update(expected));
     }
 
+    /**
+     * Test for method <b>getAll()</b> in DogService
+     * <br>
+     * Mockito: when <b>DogRepository::findAll()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void getAllTest() {
         List<Dog> expected = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.skypro.telegrambotanimalshelter.controller;
 
+import com.skypro.telegrambotanimalshelter.service.PersonCatService;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+/**
+ * Class for testing PersonDogController
+ * @see PersonDogService
+ * @author Artem Alekseev
+ */
 @WebMvcTest(PersonDogController.class)
 class PersonDogControllerTest {
 
@@ -28,6 +34,12 @@ class PersonDogControllerTest {
     @MockBean
     private PersonDogService personDogService;
 
+    /**
+     * Test for <b>getById()</b> method in PersonDogController
+     * <br>
+     * Mockito: when <b>PersonDogService::getById()</b> method called, returns <b>personDog</b> object
+     * @throws Exception
+     */
     @Test
     void getById() throws Exception {
         PersonDog personDog = new PersonDog();
@@ -43,6 +55,12 @@ class PersonDogControllerTest {
         verify(personDogService).getById(1L);
     }
 
+    /**
+     * Test for <b>save()</b> method in PersonDogController
+     * <br>
+     * Mockito: when <b>PersonDogService::create()</b> method called, returns <b>personDog</b> object
+     * @throws Exception
+     */
     @Test
     void save() throws Exception {
         PersonDog personDog = new PersonDog();
@@ -64,6 +82,13 @@ class PersonDogControllerTest {
         verify(personDogService).create(personDog);
     }
 
+    /**
+     * <br>
+     * Test for <b>update()</b> method in PersonDogController
+     * <br>
+     * Mockito: when <b>PersonDogService::update()</b> method called, returns <b>personDog</b> object
+     * @throws Exception
+     */
     @Test
     void update() throws Exception {
         PersonDog personDog = new PersonDog();
@@ -85,6 +110,10 @@ class PersonDogControllerTest {
         verify(personDogService).update(personDog);
     }
 
+    /**
+     * Test for <b>remove()</b> method in PersonDogController
+     * @throws Exception
+     */
     @Test
     void remove() throws Exception {
         mockMvc.perform(
@@ -93,6 +122,12 @@ class PersonDogControllerTest {
         verify(personDogService).removeById(1L);
     }
 
+    /**
+     * Test for <b>getAll()</b> method in PersonDogController
+     * <br>
+     * Mockito: when <b>PersonDogService::getAll()</b> method called, returns collection with <b>new PersonDog</b> object
+     * @throws Exception
+     */
     @Test
     void getAll() throws Exception {
         when(personDogService.getAll()).thenReturn(List.of(new PersonDog()));
