@@ -18,7 +18,12 @@ import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 
-
+/**
+ * Class for testing CatService
+ * @see CatService
+ * @see CatRepository
+ * @author Bazarov Bulat
+ */
 @ExtendWith(MockitoExtension.class)
 public class CatServiceTest {
 
@@ -28,6 +33,11 @@ public class CatServiceTest {
     @InjectMocks
     private CatService catService;
 
+    /**
+     * Test for method <b>getById()</b> in CatService
+     * <br>
+     * Mockito: when <b>CatRepository::findById()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void getByIdTest() {
         Cat expected = new Cat();
@@ -46,6 +56,11 @@ public class CatServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for throwing an exception in method <b>getById()</b> in CatService
+     * <br>
+     * Mockito: when <b>CatRepository::findById()</b> method called, throws <b>CatNotFoundException</b>
+     */
     @Test
     public void getByIdExceptionTest() {
         Mockito.when(catRepositoryMock.findById(any(Long.class))).thenThrow(CatNotFoundException.class);
@@ -53,6 +68,11 @@ public class CatServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(CatNotFoundException.class, () -> catService.getById(1L));
     }
 
+    /**
+     * Test for method <b>create()</b> in CatService
+     * <br>
+     * Mockito: when <b>CatRepository::save()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void createTest() {
         Cat expected = new Cat();
@@ -71,6 +91,13 @@ public class CatServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for method <b>update()</b> in CatService
+     * <br>
+     * Mockito: when <b>CatRepository::save()</b> method called, returns <b>expected</b> object
+     * <br>
+     * Mockito: when <b>CatRepository::findById()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void updateTest() {
         Cat expected = new Cat();
@@ -91,6 +118,11 @@ public class CatServiceTest {
         Assertions.assertThat(actual.getYearOfBirth()).isEqualTo(expected.getYearOfBirth());
     }
 
+    /**
+     * Test for throwing an exception in method <b>update()</b> in CatService
+     * <br>
+     * Creating a <b>Cat</b> object with null id
+     */
     @Test
     public void updateExceptionTest() {
         Cat expected = new Cat();
@@ -98,6 +130,11 @@ public class CatServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(CatNotFoundException.class, () -> catService.update(expected));
     }
 
+    /**
+     * Test for method <b>getAll()</b> in CatService
+     * <br>
+     * Mockito: when <b>CatRepository::findAll()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void getAllTest() {
         List<Cat> expected = new ArrayList<>();
