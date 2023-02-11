@@ -15,6 +15,12 @@ import java.util.*;
 
 import static org.mockito.ArgumentMatchers.any;
 
+/**
+ * Class for testing PersonCatService
+ * @see PersonDogService
+ * @see PersonDogRepository
+ * @author Bazarov Bulat
+ */
 @ExtendWith(MockitoExtension.class)
 public class PersonDogServiceTest {
     @Mock
@@ -23,6 +29,11 @@ public class PersonDogServiceTest {
     @InjectMocks
     private PersonDogService personDogService;
 
+    /**
+     * Test for method <b>getById()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::findById()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void getByIdTest() {
         PersonDog expected = new PersonDog(1L, "testName", 2000, "testPhone", "testMail", "testAddress", 1L);
@@ -40,6 +51,11 @@ public class PersonDogServiceTest {
         Assertions.assertThat(actual.getChatId()).isEqualTo(expected.getChatId());
     }
 
+    /**
+     * Test for throwing an exception in method <b>getById()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::findById()</b> method called, throws <b>PersonDogNotFoundException</b>
+     */
     @Test
     public void getByIdExceptionTest() {
         Mockito.when(personDogRepositoryMock.findById(any(Long.class))).thenThrow(PersonDogNotFoundException.class);
@@ -47,6 +63,11 @@ public class PersonDogServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(PersonDogNotFoundException.class, () -> personDogService.getById(1L));
     }
 
+    /**
+     * Test for method <b>create()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::save()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void createTest() {
         PersonDog expected = new PersonDog(1L, "testName", 2000, "testPhone", "testMail", "testAddress", 1L);
@@ -64,6 +85,11 @@ public class PersonDogServiceTest {
         Assertions.assertThat(actual.getChatId()).isEqualTo(expected.getChatId());
     }
 
+    /**
+     * Test for method <b>update()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::save()</b> method called, returns <b>expected</b> object
+     */
     @Test
     public void updateTest() {
         PersonDog expected = new PersonDog(1L, "testName", 2000, "testPhone", "testMail", "testAddress", 1L);
@@ -82,6 +108,11 @@ public class PersonDogServiceTest {
         Assertions.assertThat(actual.getChatId()).isEqualTo(expected.getChatId());
     }
 
+    /**
+     * Test for throwing an exception in method <b>update()</b> in PersonDogService
+     * <br>
+     * Creating a <b>PersonDog</b> object with null id
+     */
     @Test
     public void updateExceptionTest() {
         PersonDog expected = new PersonDog();
@@ -89,6 +120,11 @@ public class PersonDogServiceTest {
         org.junit.jupiter.api.Assertions.assertThrows(PersonDogNotFoundException.class, () -> personDogService.update(expected));
     }
 
+    /**
+     * Test for method <b>getAll()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::findAll()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void getAllTest() {
         List<PersonDog> expected = new ArrayList<>();
@@ -110,6 +146,11 @@ public class PersonDogServiceTest {
         Assertions.assertThat(actual).isEqualTo(expected);
     }
 
+    /**
+     * Test for method <b>getByChatId()</b> in PersonDogService
+     * <br>
+     * Mockito: when <b>PersonDogRepository::getByChatId()</b> method called, returns <b>expected</b> collection
+     */
     @Test
     public void getByChatIdTest() {
         Set<PersonDog> expected = new HashSet<>();

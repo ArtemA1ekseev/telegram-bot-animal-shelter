@@ -18,6 +18,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Class for testing PersonCatController
+ * @see PersonCatService
+ * @author Artem Alekseev
+ */
 @WebMvcTest(PersonCatController.class)
 class PersonCatControllerTest {
 
@@ -27,6 +32,12 @@ class PersonCatControllerTest {
     @MockBean
     private PersonCatService personCatService;
 
+    /**
+     * Test for <b>getById()</b> method in PersonCatController
+     * <br>
+     * Mockito: when <b>PersonCatService::getById()</b> method called, returns <b>personCat</b> object
+     * @throws Exception
+     */
     @Test
     void getById() throws Exception {
         PersonCat personCat = new PersonCat();
@@ -42,6 +53,12 @@ class PersonCatControllerTest {
         verify(personCatService).getById(1L);
     }
 
+    /**
+     * Test for <b>save()</b> method in PersonCatController
+     * <br>
+     * Mockito: when <b>PersonCatService::create()</b> method called, returns <b>personCat</b> object
+     * @throws Exception
+     */
     @Test
     void save() throws Exception {
         PersonCat personCat = new PersonCat();
@@ -63,6 +80,12 @@ class PersonCatControllerTest {
         verify(personCatService).create(personCat);
     }
 
+    /**
+     * Test for <b>update()</b> method in PersonCatController
+     * <br>
+     * Mockito: when <b>PersonCatService::update()</b> method called, returns <b>personCat</b> object
+     * @throws Exception
+     */
     @Test
     void update() throws Exception {
         PersonCat personCat = new PersonCat();
@@ -84,6 +107,10 @@ class PersonCatControllerTest {
         verify(personCatService).update(personCat);
     }
 
+    /**
+     * Test for <b>remove()</b> method in PersonCatController
+     * @throws Exception
+     */
     @Test
     void remove() throws Exception {
         mockMvc.perform(
@@ -92,6 +119,12 @@ class PersonCatControllerTest {
         verify(personCatService).removeById(1L);
     }
 
+    /**
+     * Test for <b>getAll()</b> method in PersonCatController
+     * <br>
+     * Mockito: when <b>PersonCatService::getAll()</b> method called, returns collection with <b>new PersonCat</b> object
+     * @throws Exception
+     */
     @Test
     void getAll() throws Exception {
         when(personCatService.getAll()).thenReturn(List.of(new PersonCat()));

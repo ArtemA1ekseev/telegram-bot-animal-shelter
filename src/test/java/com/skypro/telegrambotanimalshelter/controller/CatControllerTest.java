@@ -19,6 +19,11 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+/**
+ * Class for testing CatController
+ * @see CatService
+ * @author Artem Alekseev
+ */
 @WebMvcTest(CatController.class)
 class CatControllerTest {
 
@@ -28,6 +33,12 @@ class CatControllerTest {
     @MockBean
     private CatService catService;
 
+    /**
+     * Test for <b>getById()</b> method in CatController
+     * <br>
+     * Mockito: when <b>CatService::getById()</b> method called, returns <b>cat</b> object
+     * @throws Exception
+     */
     @Test
     void getById() throws Exception {
         Cat cat = new Cat();
@@ -43,6 +54,12 @@ class CatControllerTest {
         verify(catService).getById(1L);
     }
 
+    /**
+     * Test for <b>save()</b> method in CatController
+     * <br>
+     * Mockito: when <b>CatService::create()</b> method called, returns <b>cat</b> object
+     * @throws Exception
+     */
     @Test
     void save() throws Exception {
         Cat cat = new Cat();
@@ -64,6 +81,12 @@ class CatControllerTest {
         verify(catService).create(cat);
     }
 
+    /**
+     * Test for <b>update()</b> method in CatController
+     * <br>
+     * Mockito: when <b>CatService::update()</b> method called, returns <b>cat</b> object
+     * @throws Exception
+     */
     @Test
     void update() throws Exception {
         Cat cat = new Cat();
@@ -85,6 +108,10 @@ class CatControllerTest {
         verify(catService).update(cat);
     }
 
+    /**
+     * Test for <b>remove()</b> method in CatController
+     * @throws Exception
+     */
     @Test
     void remove() throws Exception {
         mockMvc.perform(
@@ -93,6 +120,12 @@ class CatControllerTest {
         verify(catService).removeById(1L);
     }
 
+    /**
+     * Test for <b>getAll()</b> method in CatController
+     * <br>
+     * Mockito: when <b>CatService::getAll()</b> method called, returns collection with <b>new Cat</b> object
+     * @throws Exception
+     */
     @Test
     void getAll() throws Exception {
         when(catService.getAll()).thenReturn(List.of(new Cat()));
